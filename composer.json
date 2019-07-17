@@ -1,0 +1,21 @@
+{
+    "name": "surest/thinkphp-permission",
+    "description": "这是一个基于thinkphp5.1开发 的一个权限管理包",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "邓尘锋",
+            "email": "chenf@surest.cn",
+            "homepage": "http://surest.cn"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Surest\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.0"
+    }
+}
