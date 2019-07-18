@@ -19,8 +19,6 @@ class Role extends BaseModel
 {
     use HasRoles;
 
-    protected $table = 'role';
-
     /**
      * 关联权限
      */

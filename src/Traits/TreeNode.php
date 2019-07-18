@@ -8,6 +8,7 @@
 
 namespace Surest\Traits;
 use app\common\Traits\ApiResponse;
+use GatewayWorker\Lib\Db;
 use Surest\Exceptions\CreateTreeNodeException;
 use Surest\Model\Permission;
 use think\Container;
@@ -52,28 +53,35 @@ Trait TreeNode
 
     /**
      * 初始化权限节点
+     * @param bool $isDeleteAllPermission 是否清空以往权限节点
+     * @return bool
+     * @throws CreateTreeNodeException
      */
-    public function init_node()
+    public function init_node(bool $isDeleteAllPermission = false)
     {
         try {
+            \think\Db::startTrans();
+            if($isDeleteAllPermission) {
+                Permission::where('id', '>', 0)->delete();
+            }
             $data = $this->filter_node();
             foreach ($data as $v) {
                 if($v['method'] == "get") {
                     $v['hidden'] = 0;
-
                 }else{
                     $v['hidden'] = 1;
                 }
-//                dump($v);
                 if($permission = Permission::where('rule', $v['rule'])->where('method', 'like', "%{$v['method']}%" )->find()) {
                     Permission::update($v, ['id' => $permission->id]);
                 }else{
                     Permission::create($v);
                 }
 
-
+            \think\Db::commit();
             }
         }catch (\Exception $exception) {
+
+            \think\Db::rollback();
             throw new CreateTreeNodeException("生成节点发生错误: " . $exception->getMessage());
         }
 
@@ -210,7 +218,9 @@ Trait TreeNode
     }
 
     /**
-     * 检查是否需要生成当前模块的权限节点
+     *  检查是否需要生成当前模块的权限节点
+     *  默认会读取所有的权限节点,
+     *  index , admin 只要有路由的地方都会被当成一个模块来处理
      * @param $node
      * @return bool
      */

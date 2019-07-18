@@ -13,8 +13,6 @@ use think\Model;
 
 class Permission extends BaseModel
 {
-    protected $table = 'permission';
-
     protected $type = [
         'method' => 'array'
     ];
