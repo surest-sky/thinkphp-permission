@@ -12,5 +12,4 @@ use think\model\Pivot;
 
 class RoleHasPermission extends Pivot
 {
-    protected $table = 'role_has_permission';
 }

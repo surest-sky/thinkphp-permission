@@ -14,8 +14,6 @@ use think\Model;
 class ModelHasPermission extends BaseModel
 {
     public $pk = 'permission_id';
-
-    protected $table = 'model_has_permission';
     /**
      * 重写父方法
      */
