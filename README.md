@@ -1,5 +1,9 @@
 ## thinkphp-permission RABC 权限管理包
 
+Github地址： 
+
+https://github.com/surest-sky/thinkphp-permission
+
 ### 支持功能如下
 
 - 直接、间接获取用户权限
