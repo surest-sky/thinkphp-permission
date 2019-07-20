@@ -85,6 +85,8 @@
     class {
         use TreeNode; // 引入这个 trait 即可
         public function init_permission() {
+
+            // 执行这个方法后，节点就自动生成了
             $this->init_node((bool) request()->param('is_delete', 0));
         }
     }
@@ -186,7 +188,7 @@
     
 #### 为用户赋予一个直接权限
         
-    $user->givePermissionTo($message_permission);
+    $user->givePermissionTo($permission);
     
 #### 获取用户的所有权限
 
