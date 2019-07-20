@@ -1,8 +1,17 @@
 ## thinkphp-permission RABC 权限管理包
 
+![图片描述][1]
+
 Github地址： 
 
 https://github.com/surest-sky/thinkphp-permission
+
+DEMO展示:
+
+[后台管理 ： http://vadmin.surest.cn/dist/#/](http://vadmin.surest.cn/dist/#/)
+
+账号 admin
+密码 admin123
 
 ### 支持功能如下
 
@@ -205,13 +214,7 @@ https://github.com/surest-sky/thinkphp-permission
 
 > 使用的操作没有详尽覆盖，可以参考源码，全程中文注释，也可以用来学习
 
-
-后台管理展示:
-
-[后台管理](http://vadmin.surest.cn/dist/#/)
-
-账号 admin
-
-密码 admin123
-
 MIT
+
+
+  [1]: https://s2.ax1x.com/2019/07/20/eSuofe.png
