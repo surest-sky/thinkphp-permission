@@ -8,7 +8,11 @@ https://github.com/surest-sky/thinkphp-permission
 
 DEMO展示:
 
-[后台管理 ： http://vadmin.surest.cn/dist/#/](http://vadmin.surest.cn/dist/#/)
+[后台管理 ： http://vadmin.surest.cn/dist/#/](http://v-web.surest.cn)
+
+由此开发出的一个demo: 
+
+[https://github.com/surest-sky/think-vue-admin-api](https://github.com/surest-sky/think-vue-admin-api)
 
 账号 admin
 密码 admin123
