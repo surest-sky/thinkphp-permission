@@ -8,7 +8,7 @@ https://github.com/surest-sky/thinkphp-permission
 
 DEMO展示:
 
-[后台管理 ： http://vadmin.surest.cn/dist/#/](http://v-web.surest.cn)
+[后台管理 ： http://v-web.surest.cn](http://v-web.surest.cn)
 
 由此开发出的一个demo: 
 
