@@ -221,3 +221,14 @@ DEMO展示:
 MIT
 
 qq群： 735713840
+
+
+## 更新
+
+- v0.2 
+
+        解决掉了在 > mysql 5.5的情况下: 导入sql时出现Invalid default value for 'create_time'的问题
+        
+        
+
+

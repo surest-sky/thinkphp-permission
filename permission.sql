@@ -23,12 +23,12 @@ CREATE TABLE `admin_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(50) CHARACTER SET utf8 NOT NULL COMMENT '用户名',
   `password` char(32) CHARACTER SET utf8 NOT NULL COMMENT '密码',
-  `logintime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登陆时间',
-  `loginip` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '0.0.0.0' COMMENT '登陆ip',
+  `login_time` datetime  DEFAULT NULL  COMMENT '登陆时间',
+  `login_ip` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '0.0.0.0' COMMENT '登陆ip',
   `lock` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态,1:正常,2:锁定',
-  `createtime` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `expiredtime` int(11) NOT NULL DEFAULT '0' COMMENT '过期时间',
+  `create_time` datetime  DEFAULT NULL COMMENT '创建时间',
+   `update_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `expired_time` int(11) NOT NULL DEFAULT '0' COMMENT '过期时间',
   `activationtime` int(11) DEFAULT NULL COMMENT '激活时间',
   `num` int(11) NOT NULL DEFAULT '0' COMMENT '每天上下架次数',
   `token` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
@@ -41,21 +41,6 @@ CREATE TABLE `admin_user` (
   UNIQUE KEY `username_UNIQUE` (`username`) USING BTREE,
   UNIQUE KEY `id_UNIQUE` (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COMMENT='管理员表';
-
--- ----------------------------
--- Table structure for message_model_user
--- ----------------------------
-DROP TABLE IF EXISTS `message_model_user`;
-CREATE TABLE `message_model_user` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '中间表主键id',
-  `message_id` int(11) unsigned NOT NULL,
-  `user_id` int(11) unsigned NOT NULL,
-  `status` enum('2','4','3','1') CHARACTER SET utf8 NOT NULL DEFAULT '1' COMMENT '1 等待发送 2发送成功 3发送失败 4 已撤回 ',
-  `readed` enum('1','0','2') NOT NULL DEFAULT '0' COMMENT '1 是已读取 0 是未读 2 已删除',
-  `update_time` int(11) NOT NULL,
-  `create_time` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Table structure for model_has_permission
@@ -94,8 +79,8 @@ CREATE TABLE `permission` (
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '节点备注信息',
   `p_id` int(2) NOT NULL DEFAULT '0' COMMENT '用于菜单渲染的节点',
   `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '0 禁用 1 启用',
-  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
-  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` datetime  DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `method` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '请求方法 array 格式',
   `route` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '路由',
   `hidden` int(2) NOT NULL DEFAULT '1' COMMENT 'true',
@@ -111,8 +96,8 @@ CREATE TABLE `role` (
   `id` int(16) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '角色名称',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
-  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_time` datetime  DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_role_name` (`name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
