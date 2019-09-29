@@ -17,6 +17,8 @@ class Permission extends BaseModel
         'method' => 'array'
     ];
 
+    protected $table = 'Permission';
+
     public static function create($data = [], $field = null, $replace = false)
     {
 //        if(self::where(['name' => $data['name']])
